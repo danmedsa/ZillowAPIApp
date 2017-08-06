@@ -39,7 +39,10 @@ class XMLHandler {
                 }
             return results;
         }catch (NullPointerException ex) {
-            new PopUpMessage("No results were found").show();
+            Element msg = doc.getRootElement().getChild("message");
+            String msgText = msg.getChildText("text");
+            String codeText = msg.getChildText("code");
+            new PopUpMessage(msgText + " code: "+ codeText).show();
             return new ArrayList<Home>();
         }
     }
